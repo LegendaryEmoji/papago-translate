@@ -21,7 +21,7 @@ class Papago {
     }
     static validateLanguageCode(code) {
         if (!code || typeof code != "string") return { error: true, message: "func(validateLanguageCode): Please provide a string code to `validateLanguageCode` function." };
-        if (!LANGUAGE_CODES[code.toLowerCase()]) return { error: false, result: false };
+        if (!LANGUAGE_CODES[code]) return { error: false, result: false };
         return { error: false, result: true };
     }
     static getSupportedLanguageCodes() {
@@ -49,9 +49,6 @@ class Papago {
     }
     async translate({ from = "auto", to = "en", text, honorific = false, locale = "en", raw_response = false } = {}) {
         if (typeof from != "string" || typeof to != "string" || typeof locale != "string") return { error: true, message: "func(translate): Please make sure \"from\", \"to\" and \"locale\" are valid and their data type is string." };
-        from = from.toLowerCase();
-        to = to.toLowerCase();
-        locale = locale.toLowerCase();
         if ((from != "auto" && !LANGUAGE_CODES[from]) || !LANGUAGE_CODES[to]) return { error: true, message: `func(translate): Papago doesn't support this language yet (received from(${from}) to(${to})).` };
         if (!LANGUAGE_CODES[locale]) return { error: true, message: `func(translate): Papago doesn't support this locale yet (received ${locale}).` };
         if (!text || typeof text != "string") return { error: true, message: `func(translate): Please make sure the text data type is string (received ${typeof text}).` }
@@ -107,9 +104,6 @@ class Papago {
     }
     async define({ from = "auto", to = "en", locale = "en", text, raw_response = false } = {}) {
         if (typeof from != "string" || typeof to != "string" || typeof locale != "string") return { error: true, message: "func(define): Please make sure \"from\", \"to\" and \"locale\" are valid and their data type is string." };
-        from = from.toLowerCase();
-        to = to.toLowerCase();
-        locale = locale.toLowerCase();
         if ((from != "auto" && !LANGUAGE_CODES[from]) || !LANGUAGE_CODES[to]) return { error: true, message: `func(define): Papago doesn't support this language yet (received from(${from}) to(${to})).` };
         if (!LANGUAGE_CODES[locale]) return { error: true, message: `func(define): Papago doesn't support this locale yet (received ${locale}).` };
         if (!text || typeof text != "string") return { error: true, message: `func(define): Please make sure the text data type is string (received ${typeof text}).` }
@@ -149,6 +143,6 @@ class Papago {
 };
 
 module.exports = {
-    version: "0.0.1",
+    version: "0.1.0",
     Papago: Papago
 };
