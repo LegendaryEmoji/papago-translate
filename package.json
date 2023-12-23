@@ -1,6 +1,6 @@
 {
   "name": "papago-translate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Node.js NPM package for using Naver Papago easily (papago.naver.com).",
   "main": "main.js",
   "scripts": {

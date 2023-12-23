@@ -13,7 +13,7 @@ const TRANSLATE_URL = "https://papago.naver.com/apis/n2mt/translate";
 const SEARCH_DIRECTORY_URL = "https://papago.naver.com/apis/dictionary/search";
 
 class Papago {
-    constructor({ save_device_id = true, user_agent = "PapagoTranslate NPM (https://www.npmjs.com)" }) {
+    constructor({ save_device_id = true, user_agent = "PapagoTranslate NPM (https://www.npmjs.com)" } = {}) {
         if (save_device_id) this.device_id = generateUUID();
 
         this.user_agent = user_agent;
@@ -143,6 +143,6 @@ class Papago {
 };
 
 module.exports = {
-    version: "0.1.0",
+    version: "0.1.1",
     Papago: Papago
 };
